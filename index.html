@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- reset style sheet -->
+  <link rel="stylesheet" type="text.css" href="assets/css/reset.css">
+  <!-- jquery cdn -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- bootsrap cdn-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- style sheet -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <title>gifTastic</title>
+</head>
+
+<body>
+
+
+  <body>
+    <div class="jumbotron fluid font-weight-bold">
+      <h1>Get giffy with it!</h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <div id="gif-buttons"></div>
+        </div>
+        <div class="col-sm-4">
+          <form id="form">
+            <label for="superHero-input">Add a super hero</label>
+            <br>
+            <input type="text" id="superHero-input">
+            <input id="add-superHero" type="submit" value="Submit">
+          </form>
+        </div>
+        <div class="row" id="gifBank">
+          <div class="col-sm-8">
+            <div id="superHeroes"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/javascript/app.js"></script>
+  </body>
+
+</html>
