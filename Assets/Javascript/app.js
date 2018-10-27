@@ -1,10 +1,9 @@
 $(document).ready(function () {
 
-// Starting gif array
-var superHeroes = ["Spider-Man", "The Incredible Hulk", "Thor", "Iron Man", "Captain America", 
-"Black Panther", "Ant Man", "Hawkeye"];
+// Super hero gif array
+var superHeroes = ["Spider-Man", "The Incredible Hulk", "Thor", "Iron Man", "Captain America", "Ant Man", "Hawkeye"];
 
-// Add buttons for original superheroes array
+// Add buttons for superheroes array
 function addButtons() {
     $("#gif-buttons").empty();
     for (i = 0; i < superHeroes.length; i++) {
@@ -14,15 +13,14 @@ function addButtons() {
 addButtons();
 
 // Adding button for super hero entered
-$("submit").on("click", function () {
+$("#add-superHero").on("click", function () {
     event.preventDefault();
-    var superHero = $("#superHero-input").val().trim();
-    superHeroes.push(superHero);
-    renderButtons();
-    return;
+    var newSuperHero = $("#superHero-input").val().trim();
+    superHeroes.push(newSuperHero);
+    addButtons();
 });
 
-// Pulling gifs from API and adding to HTML buttons  
+// Pulling gifs from API ading to HTML when buttons clicked
 $("button").on("click", function () {
     var superHero = $(this).attr("data-superHero");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -34,8 +32,8 @@ $("button").on("click", function () {
     }).done(function (response) {
         var results = response.data;
         $("#superHeroes").empty();
-        for (var i = 0; i < results.length; i++) {
-            var superHeroDiv = $("<div>");
+        for (var i = 0; i < 10; i++) {
+            var div = $("<div>");
             var p = $("<p>").text("Rating: " + results[i].rating);
             var superHeroImg = $("<img>");
             superHeroImg.attr("src", results[i].images.original_still.url);
@@ -43,9 +41,9 @@ $("button").on("click", function () {
             superHeroImg.attr("data-animate", results[i].images.original.url);
             superHeroImg.attr("data-state", "still");
             superHeroImg.attr("class", "gif");
-            superHeroDiv.append(p);
-            superHeroDiv.append(superHeroImg);
-            $("#superHeroes").append(superHeroDiv);
+            div.append(p);
+            div.append(superHeroImg);
+            $("#superHeroes").append(div);
         }
     });
 });
@@ -68,5 +66,4 @@ function changeState() {
 }
 
 $(document).on("click", ".gif", changeState);
-
 });
