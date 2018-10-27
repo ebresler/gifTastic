@@ -1,3 +1,4 @@
+console.log("sanity check");
 $(document).ready(function () {
 
     // Super hero gif array
