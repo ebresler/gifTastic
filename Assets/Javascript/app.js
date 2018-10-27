@@ -18,18 +18,18 @@ $("#add-superHero").on("click", function () {
     var newSuperHero = $("#superHero-input").val().trim();
     superHeroes.push(newSuperHero);
     addButtons();
+
 });
 
-// Pulling gifs from API ading to HTML when buttons clicked
-$("button").on("click", function () {
+// Pulling gifs from API - adding to HTML when buttons clicked
+$(document).on("click", "button", function() {
     var superHero = $(this).attr("data-superHero");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        superHero + "&api_key=TvW0nXcnntyLfwMRKGNgSNcm9szSP5sy"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + superHero + "&api_key=TvW0nXcnntyLfwMRKGNgSNcm9szSP5sy"
 
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).done(function (response) {
+    }).done(function (response) {  
         var results = response.data;
         $("#superHeroes").empty();
         for (var i = 0; i < 10; i++) {
